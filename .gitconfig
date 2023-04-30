@@ -1,0 +1,15 @@
+[alias]
+	st = status
+	co = checkout
+	sl = log --graph --pretty=format:'%Cred%h%Creset -%Cblue%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative -10
+
+[user]
+	email = bethebunny@gmail.com
+	name = Stef Lindall
+[push]
+	default = simple
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[pull]
+	rebase = false
