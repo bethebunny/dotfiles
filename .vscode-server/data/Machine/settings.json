@@ -1,0 +1,89 @@
+{
+  "files.eol": "\n",
+  "python.formatting.provider": "black",
+  "python.venvPath": "~/.venvs",
+  "python.dataScience.askForKernelRestart": false,
+  "python.testing.pytestEnabled": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.codeLens": false,
+  "python.dataScience.sendSelectionToInteractiveWindow": true,
+  "prettier.arrowParens": "avoid",
+  "prettier.singleQuote": true,
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "prettier.printWidth": 100,
+  "prettier.configPath": ".prettierrc",
+  "telemetry.enableTelemetry": false,
+  "python.terminal.launchArgs": ["-m", "IPython", "--no-autoindent"],
+  "jupyter.askForKernelRestart": false,
+  "jupyter.interactiveWindowMode": "perFile",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "explorer.confirmDelete": false,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "remote.SSH.remotePlatform": {
+    "woundwort": "linux"
+  },
+  "rust-analyzer.check.overrideCommand": null,
+  "window.menuBarVisibility": "compact",
+  "zenMode.hideLineNumbers": false,
+  "vim.ignorecase": false,
+  "vim.leader": ",",
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["u"],
+      "commands": ["undo"]
+    },
+    {
+      "before": ["<C-r>"],
+      "commands": ["redo"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<Leader>", "<Leader>"],
+      "commands": ["workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup", "list.select"]
+    },
+    {
+      "before": ["<Leader>", "b"],
+      "commands": ["workbench.action.quickOpen"]
+    },
+    {
+      "before": ["<Leader>", "z"],
+      "commands": ["workbench.action.toggleZenMode"]
+    },
+    {
+      "before": ["<Space>"],
+      "commands": ["editor.action.quickFix"]
+    },
+    {
+      "before": ["<Leader>", "."],
+      "commands": ["workbench.action.files.save"]
+    },
+    {
+      "before": ["g", "f"],
+      "commands": ["workbench.action.gotoFile"]
+    },
+    {
+      "before": ["<Leader>", "l"],
+      "commands": ["editor.action.marker.next"],
+      "when": "editorFocus"
+    },
+    {
+      "before": ["<Leader>", "h"],
+      "after": ["<C-w>", "h"]
+    },
+    {
+      "before": ["<Leader>", "w"],
+      "after": ["<C-w>", "w"]
+    }
+  ],
+  "editor.minimap.enabled": false,
+  "workbench.sideBar.location": "right"
+}
+
