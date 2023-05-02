@@ -1,8 +1,3 @@
-[alias]
-	st = status
-	co = checkout
-	sl = log --graph --pretty=format:'%Cred%h%Creset -%Cblue%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative -10
-
 [user]
 	email = bethebunny@gmail.com
 	name = Stef Lindall
@@ -13,3 +8,24 @@
 	helper = !/usr/bin/gh auth git-credential
 [pull]
 	rebase = false
+
+[alias]
+	st = status
+	co = checkout
+  sl = log --pretty=my-oneline --decorate --graph --date=relative --abbrev-commit -25
+	sl-backup = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -n20
+  co-other = "!git fetch origin \"+refs/heads/$1:refs/remotes/origin/$1\"  #"
+  is-my-branch = !sh -c '[[ "$(git cb)" == "stef-"* ]] && echo "yes" || echo "no"'
+  up = "!f() { \
+      case $(git is-my-branch) in \
+        yes) git push origin --set-upstream $(git cb) ;; \
+        no) echo 'git up only supported for my branches (stef-*' ;; \
+      esac; \
+    }; \
+    f"
+  cb = "!git branch | grep '*' | cut -d' ' -f2"
+  pc = "!pre-commit run --from-ref $(git merge-base --fork-point master) --to-ref $(git cb)"
+  a = "!git st -s | fzf -m --height 50 --preview 'git diff --color {-1}' | awk '{print $2}' | xargs git add"
+  recent = for-each-ref --count=10 --sort=-committerdate refs/heads/ --format='%(refname:short)'
+[pretty]
+    my-oneline = %C(yellow)%h%C(reset) %C(magenta)%cd%C(reset) %C(bold blue)%an%C(reset) %s%C(bold yellow)%d%C(reset)
