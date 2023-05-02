@@ -36,9 +36,9 @@ fpath=(~/.zsh $fpath)
 # this includes setting up some path stuff
 autoload -Uz compinit; compinit
 autoload -Uz bashcompinit; bashcompinit
-. ~/.bash_profile
-. ~/.bashrc
-. ~/.aliases
+[ -f ~/.bash_profile ] && . ~/.bash_profile
+[ -f ~/.bashrc ] && . ~/.bashrc
+[ -f ~/.aliases ] && . ~/.aliases
 
 # add vesion control to prompt?
 autoload -Uz vcs_info
