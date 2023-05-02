@@ -11,6 +11,9 @@ dotfiles checkout origin/master
 # most dotfiles now available, not necessarily active
 dotfiles co -b master
 dotfiles --set-upstream-to=origin/master
+
+# if you want to be able to push to github
+gh auth login
 ```
 
 - Restart shell/vim/whatever to make everything take effect
