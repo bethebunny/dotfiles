@@ -37,7 +37,7 @@ fpath=(~/.zsh $fpath)
 autoload -Uz compinit; compinit
 autoload -Uz bashcompinit; bashcompinit
 [ -f ~/.bash_profile ] && . ~/.bash_profile
-[ -f ~/.bashrc ] && . ~/.bashrc
+#[ -f ~/.bashrc ] && . ~/.bashrc
 [ -f ~/.aliases ] && . ~/.aliases
 
 # add vesion control to prompt?
@@ -58,6 +58,7 @@ function chpwd {
   [[ $(ls | wc -l) -gt 10 ]] && ls || ls -l
 }
 
+[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # CTRL-G - Select recent git branch from fzf

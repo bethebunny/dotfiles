@@ -29,3 +29,5 @@
   recent = for-each-ref --count=10 --sort=-committerdate refs/heads/ --format='%(refname:short)'
 [pretty]
     my-oneline = %C(yellow)%h%C(reset) %C(magenta)%cd%C(reset) %C(bold blue)%an%C(reset) %s%C(bold yellow)%d%C(reset)
+[init]
+	defaultBranch = main
