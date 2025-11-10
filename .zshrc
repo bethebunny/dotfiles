@@ -3,6 +3,9 @@ HISTFILE=~/.histfile
 HISTSIZE=100000
 SAVEHIST=100000
 
+export TZ="PST+7"
+export EDITOR="$(which vim)"
+
 # Don't show duplicates in history search
 setopt HIST_FIND_NO_DUPS
 # Share history between terminals
