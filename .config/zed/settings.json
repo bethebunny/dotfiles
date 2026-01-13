@@ -14,7 +14,8 @@
                         "name": "ruff"
                     }
                 }
-            ]
+            ],
+            "language_servers": ["ruff", "!ty"]
         },
         "C++": {
             "formatter": "language_server",
@@ -29,7 +30,8 @@
     "lsp": {
         "clangd": {
             "settings": {
-                "binary": "/usr/bin/clangd"
+                "binary": "/usr/bin/clangd",
+                "arguments": ["--compile-commands-dir=/home/ubuntu/modular"]
             }
         },
         "starpls": {
@@ -49,10 +51,20 @@
             }
         },
         "pylsp": {
+            "binary": {
+                "path": "/home/ubuntu/modular/.venv/bin/pylsp"
+            },
             "settings": {
-                "plugins": {
-                    "mypy": {
-                        "enabled": true
+                "pylsp": {
+                    "plugins": {
+                        "pylsp_mypy": {
+                            "enabled": true,
+                            "config_file": "/home/ubuntu/modular/pyproject.toml",
+                            "overrides": [
+                                "--python-path=/home/ubuntu/modular/max/python",
+                                true
+                            ]
+                        }
                     }
                 }
             }

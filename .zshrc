@@ -78,3 +78,9 @@ fzf-recent-branch-widget() {
 
 zle     -N   fzf-recent-branch-widget
 bindkey '^G' fzf-recent-branch-widget
+
+[ -f ~/.local/bin/env ] && source ~/.local/bin/env
+[ -f ~/.cargo/env ] && source ~/.cargo/env
+which jj > /dev/null && source <(jj util completion zsh)
+
+[ -f ~/modular/utils/start-modular.sh ] && source ~/modular/utils/start-modular.sh
