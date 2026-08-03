@@ -1,0 +1,12 @@
+# This branch is checked out directly as ~/.claude. Ignore everything the
+# live config dir contains; publish only what is explicitly unignored.
+# Sensitive live state (settings.json, history.jsonl, projects/ memory,
+# sessions/) must never become trackable — add unignore rules narrowly.
+*
+!CLAUDE.md
+!agents/
+!agents/*.md
+!.gitignore
+!README.md
+!hooks/
+!hooks/pre-commit
