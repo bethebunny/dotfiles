@@ -1,6 +1,6 @@
 # agents
 
-Scrubbed public copy of my Claude Code user config. The branch root mirrors
+Public copy of my Claude Code user config. The branch root mirrors
 `~/.claude` so it can be checked out directly as that directory:
 
 - `CLAUDE.md` — user-global guidance (working style + multi-agent workflow
@@ -8,11 +8,6 @@ Scrubbed public copy of my Claude Code user config. The branch root mirrors
 - `agents/` — subagent charters dispatched by that workflow.
 - `.gitignore` — whitelist: everything in the live config dir (settings,
   history, memory, sessions) is ignored; only the files above are tracked.
-- `hooks/pre-commit` — guard against committing internal references.
-
-Published content is sanitized: no internal ticket/PR references, no
-in-flight feature names. The pre-commit guard catches link/ticket patterns;
-prose still needs review before pushing.
 
 This branch is deliberately orphaned from the dotfiles master branch so the
 Coder dotfiles bootstrap (which applies the default branch) never touches it.
@@ -34,13 +29,5 @@ git reset --hard origin/agents   # only touches tracked files; live state is unt
 git branch -u origin/agents
 ```
 
-## Publishing changes
-
-On a box where `~/.claude` is the checkout: edit the live files, then commit
-and push. Enable the guard first (once per clone):
-
-```sh
-git config core.hooksPath hooks
-```
-
-Update with `git pull`.
+Update with `git pull`. Publish by editing the live files, then commit and
+push.

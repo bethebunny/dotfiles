@@ -8,5 +8,3 @@
 !agents/*.md
 !.gitignore
 !README.md
-!hooks/
-!hooks/pre-commit

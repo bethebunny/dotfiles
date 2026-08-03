@@ -1,7 +1,0 @@
-#!/bin/sh
-# Backstop against publishing internal references. Catches link/ticket/PR
-# patterns only — roadmap-flavored prose still needs human review.
-if git diff --cached | grep -niE 'linear\.app|notion\.so|slack\.com|docs\.google|#[0-9]{5}|[A-Z]{2,}-[0-9]{4,}'; then
-  echo 'pre-commit guard: internal reference patterns found above — scrub first' >&2
-  exit 1
-fi
