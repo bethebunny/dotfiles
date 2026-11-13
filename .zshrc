@@ -58,6 +58,7 @@ REPORTTIME=10
 
 # ls after cd
 function chpwd {
+  [[ -o interactive ]] || return
   [[ $(ls | wc -l) -gt 10 ]] && ls || ls -l
 }
 
@@ -84,3 +85,31 @@ bindkey '^G' fzf-recent-branch-widget
 which jj > /dev/null && source <(jj util completion zsh)
 
 [ -f ~/modular/utils/start-modular.sh ] && source ~/modular/utils/start-modular.sh
+
+# Stop git from discovering ~/.git (dotfiles) when walking up from sibling
+# directories like jj secondary workspaces that don't have their own .git.
+export GIT_CEILING_DIRECTORIES="$HOME"
+
+# In a secondary jj workspace there's no .git, so `gh` walks up to $HOME and
+# picks up the dotfiles repo. Derive GH_REPO from jj's origin remote instead.
+gh() {
+  if [[ -z "$GH_REPO" ]] && command -v jj &>/dev/null && jj workspace root &>/dev/null; then
+    local ws
+    ws=$(jj workspace root)
+    if [[ ! -e "$ws/.git" ]]; then
+      local url repo
+      url=$(jj git remote list 2>/dev/null | awk '$1=="origin"{print $2; exit}')
+      if [[ "$url" == *github.com* ]]; then
+        repo=${url#*github.com[:/]}
+        repo=${repo%.git}
+        GH_REPO=$repo command gh "$@"
+        return
+      fi
+    fi
+  fi
+  command gh "$@"
+}
+
+[ -f "$HOME/.local/bin/env" ] && . "$HOME/.local/bin/env"
+
+[ -d "$HOME/.pixi/bin" ] && export PATH="$HOME/.pixi/bin:$PATH"
